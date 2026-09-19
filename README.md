@@ -14,15 +14,15 @@ Integrar un asistente de inteligencia artificial en la plataforma Resuelve que, 
 
 ## Datos
 
-Para este primer avance se utilizará un archivo CSV con datos sintéticos de PQRS. La plataforma Resuelve todavía no se encuentra implementada en conjuntos residenciales, por lo que actualmente no cuenta con registros operativos de usuarios.
+Para este primer avance se utiliza un archivo CSV con 12 datos sintéticos, adaptados de los casos de demostración de Resuelve. La plataforma aún no está desplegada en conjuntos residenciales y, por tanto, no cuenta con registros operativos de residentes.
 
 El conjunto de datos representará solicitudes habituales presentadas por residentes y contendrá campos como:
 
 - Número de radicado.
+- Asunto de la solicitud.
 - Tipo de PQRS.
-- Categoría de la solicitud.
 - Estado.
-- Numero de dias en los que se obtendrá una respuesta.
+- Días transcurridos desde la radicación.
 - Descripción de la solicitud.
 
 El uso de datos sintéticos permite representar escenarios realistas, desarrollar el análisis inicial y proteger la información personal y confidencial de los residentes.
