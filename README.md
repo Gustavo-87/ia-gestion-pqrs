@@ -114,3 +114,47 @@ En los siguientes avances se plantea integrar inteligencia artificial en Resuelv
 - Apoyar al administrador durante la gestión y seguimiento de cada caso.
 - Evaluar las respuestas sugeridas antes de incorporarlas a la plataforma.
 
+## Clase 7 - Preparación de Datos
+
+Para la actividad independiente se utilizó el archivo `data/pqrs.csv`, compuesto por 12 registros sintéticos relacionados con la gestión de PQRS en conjuntos residenciales.
+
+### Exploración con Pandas
+
+El script `src/preparacion_pqrs.py` carga los datos con `pd.read_csv()` y muestra:
+
+- Las primeras cinco filas con `df.head()`.
+- La estructura y tipos de datos con `df.info()`.
+- Las estadísticas descriptivas con `df.describe()`.
+- Los valores nulos por columna con `df.isnull().sum()`.
+
+El conjunto tiene 12 filas y 6 columnas. Se identificó que no existen valores nulos en ninguna de sus columnas.
+
+### Limpieza y preparación
+
+La columna `dias_desde_radicacion` se convierte a formato numérico. El código incluye un manejo condicional: si en futuros registros aparecen valores nulos en esta columna, se reemplazarán mediante la mediana. En los datos analizados no fue necesario aplicar esa imputación.
+
+Las variables categóricas `tipo` y `estado` se codificaron con One-Hot Encoding mediante `pd.get_dummies()`. Esto crea columnas numéricas que pueden usarse en un futuro modelo de aprendizaje automático.
+
+También se creó la columna derivada `longitud_descripcion`, que cuenta los caracteres de la descripción de cada PQRS. Esta variable permite explorar si la extensión del texto presenta alguna relación con la antigüedad de la solicitud.
+
+El resultado se guarda en `data/pqrs_preparadas_ml.csv`. Esta copia contiene datos numéricos preparados para un futuro ejercicio de Machine Learning; todavía no se entrena un modelo, ya que el conjunto tiene únicamente 12 registros sintéticos.
+
+### Visualizaciones con Seaborn
+
+#### Distribución de días desde la radicación
+
+![Histograma de días desde la radicación](histograma_dias_pqrs.png)
+
+Cinco de las doce PQRS tienen entre 2 y 25 días desde su radicación. Sin embargo, existen solicitudes con 130 y 155 días, lo cual muestra diferencias importantes en la antigüedad de los casos y la necesidad de hacer seguimiento.
+
+#### Cantidad de PQRS por tipo
+
+![Cantidad de PQRS por tipo](pqrs_por_tipo.png)
+
+Los reclamos son el tipo más frecuente, con 4 de 12 registros (33,3 %). En este conjunto sintético, este hallazgo puede orientar la creación futura de plantillas e ideas de redacción para reclamos.
+
+#### Antigüedad y longitud de la descripción
+
+![Antigüedad y longitud de la descripción](antiguedad_vs_descripcion.png)
+
+No se observa una relación directa entre los días desde la radicación y la longitud de la descripción. Por ello, una futura solución de IA debería considerar principalmente el contenido y tipo de la PQRS, no solamente su antigüedad.
