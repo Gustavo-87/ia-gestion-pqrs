@@ -158,3 +158,25 @@ Los reclamos son el tipo más frecuente, con 4 de 12 registros (33,3 %). En este
 ![Antigüedad y longitud de la descripción](antiguedad_vs_descripcion.png)
 
 No se observa una relación directa entre los días desde la radicación y la longitud de la descripción. Por ello, una futura solución de IA debería considerar principalmente el contenido y tipo de la PQRS, no solamente su antigüedad.
+
+## Clase 8 - Neurona Artificial y Compuertas Lógicas
+
+En esta actividad se implementó una neurona artificial o perceptrón simple en Python. La neurona calcula una suma ponderada de las entradas y aplica una función escalón para producir una salida de 0 o 1.
+
+Primero se implementó la compuerta AND en `src/neurona_and.py`. Con los parámetros iniciales `w1 = 0.1`, `w2 = 0.1` y `b = 0.0`, la neurona redujo su error hasta cero y aprendió la compuerta en 3 épocas.
+
+![Evolución del error de AND](evolucion_error.png)
+
+También se implementaron las compuertas OR y NOT en `src/neuronas_logicas.py`.
+
+- La compuerta OR aprendió en 2 épocas.
+- La compuerta NOT aprendió en 4 épocas.
+- En los tres casos se utilizó una tasa de aprendizaje de 0.1; no fue necesario modificarla porque el error llegó a cero.
+
+![Evolución del error de OR](evolucion_error_or.png)
+
+![Evolución del error de NOT](evolucion_error_not.png)
+
+La diferencia principal entre AND y OR está en su salida esperada. AND solo devuelve 1 cuando ambas entradas son 1; OR devuelve 1 cuando al menos una entrada es 1.
+
+La compuerta XOR no puede ser aprendida por una sola neurona o perceptrón simple porque sus resultados no son separables mediante una sola frontera de decisión lineal. Para aprender XOR se requiere una red con más de una neurona, por ejemplo una capa oculta.
